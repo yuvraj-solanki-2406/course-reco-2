@@ -1,0 +1,31 @@
+{% extends "navbar.html" %}
+
+{% block content %}
+
+<section class="my-4">
+    <h1>Popular Courses</h1>
+    <span class="text-muted">popularity based Recommendation System</span>
+    <div class="d-flex">
+    {% for course in popular_courses_list.values %}
+        <div class="card popular_card_" style="width: 18rem;">
+            <img class="card-img-top" src={{ course[-1] }} alt="Card image cap">
+            <div class="card-body">
+                <a href="/courses/{{ course[0] }}" class="card_navlink">
+                    <h5 class="card-title">{{ course[1] }}</h5>
+                </a>
+                <p class="card-text">{{ course[-2] }}</p>
+                <div class="d-flex">
+                    <div class="col-6">
+                        <button class="btn btn-warning btn-small">Subscribers: {{ course[5] }}</button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-warning btn-small">Reviews: {{ course[6] }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</section>
+
+{% endblock content %}
